@@ -13,6 +13,7 @@ const routes =
         name: 'country',
         path: '/country/:id',
         component: Country,
+        props: true,
       },
     ]
 

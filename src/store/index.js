@@ -3,14 +3,17 @@ import {createStore} from 'vuex'
 // Create a new store instance.
 const store = createStore({
   state: {
-    current_country: {},
+    currentCountry: {},
     countries: [],
   },
   getters: {
     getCountries: state => state.countries,
+    getCurrentCountry: state => state.currentCountry,
   },
   mutations: {
     setCountries: (state, countries_data) => state.countries = countries_data,
+    setCurrentCountry: (state, country_data) => state.currentCountry =
+        country_data,
   },
   actions: {
     loadCountries: async ({commit}) => {
@@ -26,6 +29,13 @@ const store = createStore({
       commit(
           'setCountries',
           countries_data,
+      );
+    },
+    findCurrentCountry: ({commit, state}, country_id) => {
+      let current_country = state.countries[country_id];
+      commit(
+          'setCurrentCountry',
+          current_country,
       );
     }
   }

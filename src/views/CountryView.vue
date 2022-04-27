@@ -1,7 +1,7 @@
 <template>
   <div class="country">
-    <router-link :to="{name :'home'}" class="back_button">← Retour</router-link>
-    <h1 class="country_name">Country Name</h1>
+    <h1 class="country_name">{{ country.name }}</h1>
+     <router-link :to="{name :'home'}" class="back_button">← Retour</router-link>
   </div>
 </template>
 
@@ -9,19 +9,17 @@
 
 export default {
   name: 'CountryView',
-  props: {
-    id: Number,
+  props: ['id'],
+  created () {
+    // action
+    this.$store.dispatch('findCurrentCountry', this.id);
   },
-//   created () {
-//     // action
-//     this.$store.dispatch('setCurrentMovie', this.id);
-//   },
-//   computed: {
-//     country: function() {
-//       console.log(this.$store.getters.getCurrentMovie);
-//       return this.$store.getters.getCurrentMovie;
-//     }
-//   },
+  computed: {
+    country: function() {
+      console.log(this.$store.getters.getCurrentCountry);
+      return this.$store.getters.getCurrentCountry;
+    }
+  },
 }
 </script>
 
