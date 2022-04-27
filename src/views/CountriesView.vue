@@ -1,17 +1,18 @@
 <template>
-  <h1>Countries</h1>
+  <h1>List of countries</h1>
   <div class="countries">
     <CountryLink
       v-for="(country, idx) in countries"
       :key="idx"
       :id="idx"
       :name="country.name"
+      :flag="country.flags.svg"
     />
   </div>
 </template>
 
 <script>
-import CountryLink from "../components/CountryLink.vue";
+import CountryLink from "@/components/CountryLink.vue";
 
 export default {
   name: 'CountriesView',
@@ -32,5 +33,16 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  text-align: center;
+  padding: 3% 2.5% 2.5% 2.5%;
+}
 
+.countries {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 15px 15px 15px;
+}
 </style>

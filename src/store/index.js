@@ -25,7 +25,7 @@ const store = createStore({
       // parse the JSON response
       const countries_data = await response.json();
 
-      // commit the new value via the "setWorldData" mutation
+      // commit the new value via the "setCountries" mutation
       commit(
           'setCountries',
           countries_data,
