@@ -3,8 +3,8 @@ import {createStore} from 'vuex'
 // Create a new store instance.
 const store = createStore({
   state: {
-    currentMovie: {},
-    movies: [],
+    current_country: {},
+    countries: [],
   },
   getters: {},
   mutations: {},
