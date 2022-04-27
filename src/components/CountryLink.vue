@@ -1,12 +1,10 @@
 <template>
-    <!-- <router-link
+    <router-link
         :to="{name: 'country', params: {id: this.id}}"
         class="country"
-    > -->
-    <div class="country">
+    >
         <h2 class="country_name">{{name}}</h2>
-    </div>
-    <!-- </router-link> -->
+    </router-link>
 </template>
 
 <script>
