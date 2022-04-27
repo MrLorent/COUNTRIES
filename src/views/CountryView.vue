@@ -3,7 +3,17 @@
     <h1 class="country_name">{{ country.name }}</h1>
     <div class="container">
       <div class="caracteristics">
-
+          <span class="carac name">Name : <strong>{{ country.name }}</strong></span>
+          <span class="carac native_name">Native name : <strong>{{ country.nativeName }}</strong></span>
+          <span class="carac capital">Capital : <strong>{{ country.capital }}</strong></span>
+          <ul class="carac languages">
+            Language(s) spoken :
+            <li class="language" v-for="(language, idx) in country.languages" :key="idx">- <strong>{{ language.name }}</strong></li>
+          </ul>
+          <ul class="carac currencies">
+            Currency(ies) :
+            <li class="language" v-for="(currency, idx) in country.currencies" :key="idx">- <strong>{{ currency.name }} ({{ currency.symbol }})</strong></li>
+          </ul>
       </div>
       <div class="flag">
         <img class="flag_picture" :src="country.flags.svg"/>
@@ -44,7 +54,9 @@ export default {
   .country {
     width: 100%;
     height: 100%;
+    position: relative;
   }
+  
   h1 {
     text-align: center;
     padding: 3% 2.5% 2.5% 2.5%;
@@ -61,12 +73,24 @@ export default {
     width: 50%;
     height: 100%;
     box-sizing: border-box;
-  }
-
-  .flag {
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .caracteristics {
+    padding: 5%;
+  }
+
+  .carac {
+    padding: 0 0 15px 0;
+  }
+
+  li {
+    margin: 10px 0 0 10px;
+  }
+
+  .flag {
     align-items: center;
   }
 
