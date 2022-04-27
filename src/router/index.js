@@ -8,6 +8,11 @@ const routes =
         path: '/',
         component: Countries,
       },
+      //   {
+      //     name: 'country',
+      //     path: '/country/:id',
+      //     component: Country,
+      //   },
     ]
 
     const router = createRouter({

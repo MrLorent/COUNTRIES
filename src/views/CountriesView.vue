@@ -1,17 +1,23 @@
 <template>
   <h1>Countries</h1>
   <div class="countries">
-    <div  v-for="(country, idx) in countries" :key="idx">
-      <h2 class="country__name">{{country.name}}</h2>
-    </div>
+    <CountryLink
+      v-for="(country, idx) in countries"
+      :key="idx"
+      :id="idx"
+      :name="country.name"
+    />
   </div>
 </template>
 
 <script>
-
+import CountryLink from "../components/CountryLink.vue";
 
 export default {
   name: 'CountriesView',
+  components: {
+    CountryLink
+  },
   created () {
     // action
     this.$store.dispatch('loadCountries');
