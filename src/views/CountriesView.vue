@@ -42,9 +42,12 @@ h1 {
 
 .countries {
   width: 100%;
+  height: calc(100% - var(--header-height));
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  padding: calc(var(--header-height) + 15px) 15px 15px 15px;
+  overflow-y: scroll;
+  padding: 15px;
+  margin: var(--header-height) 0 0 0;
 }
 </style>

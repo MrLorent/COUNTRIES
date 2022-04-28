@@ -67,7 +67,6 @@ a:hover {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  overflow-y: scroll;
   display: flex;
   flex-direction: column;
   position: relative;
