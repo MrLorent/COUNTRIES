@@ -5,7 +5,7 @@
       v-for="(country, idx) in countries"
       :key="idx"
       :id="idx"
-      :name="country.name"
+      :name="country.name.official ? country.name.official : country.name"
       :flag="country.flags.svg"
     />
   </div>
@@ -22,7 +22,6 @@ export default {
     CountryLink,
   },
   created () {
-    // action
     this.$store.dispatch('loadCountries');
   },
   computed:  {
@@ -45,6 +44,7 @@ h1 {
   height: calc(100% - var(--header-height));
   box-sizing: border-box;
   display: flex;
+  align-items: flex-start;
   flex-wrap: wrap;
   overflow-y: scroll;
   padding: 15px;

@@ -1,14 +1,14 @@
 <template>
   <div class="country">
-    <h1 class="country_name">{{ country.name }}</h1>
+    <h1 class="country_name">{{ country.name.official ? country.name.official : country.name }}</h1>
     <div class="container">
       <div class="caracteristics">
-          <span class="carac name">Name : <strong>{{ country.name }}</strong></span>
-          <span class="carac native_name">Native name : <strong>{{ country.nativeName }}</strong></span>
-          <span class="carac capital">Capital : <strong>{{ country.capital }}</strong></span>
+          <span class="carac name">Name : <strong>{{ country.name.official ? country.name.official : country.name }}</strong></span>
+          <span class="carac native_name">Native name : <strong>{{ country.name.nativeName ? country.name.nativeName.eng.official : country.nativeName }}</strong></span>
+          <span class="carac capital">Capital : <strong>{{ typeof(country.capital) == "object" ? country.capital[0] : country.capital }}</strong></span>
           <ul class="carac languages">
             Language(s) spoken :
-            <li class="language" v-for="(language, idx) in country.languages" :key="idx">- <strong>{{ language.name }}</strong></li>
+            <li class="language" v-for="(language, idx) in country.languages" :key="idx">- <strong>{{ language.name ? language.name : language}}</strong></li>
           </ul>
           <ul class="carac currencies">
             Currency(ies) :
@@ -17,7 +17,7 @@
       </div>
       <div class="flag">
         <img class="flag_picture" :src="country.flags.svg"/>
-        <span class="label">{{ country.name + " flag"}}</span>
+        <span class="label">{{ country.name.official ? country.name.official : country.name + " flag"}}</span>
       </div>
     </div>
     <router-link
