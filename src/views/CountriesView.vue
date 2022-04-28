@@ -45,6 +45,6 @@ h1 {
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 15px 15px 15px;
+  padding: calc(var(--header-height) + 15px) 15px 15px 15px;
 }
 </style>

@@ -13,5 +13,11 @@ export default {
 </script>
 
 <style scoped>
-
+    header {
+        width: 100%;
+        height: var(--header-height);
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+    }
 </style>

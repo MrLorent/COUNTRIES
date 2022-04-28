@@ -19,6 +19,9 @@ export default {
 
   --discret-font-color: #838383;
   --white: #ffffff;
+
+  /* HEADER */
+  --header-height: 60px;
 }
 
 /*------------ GENERAL -------------*/
