@@ -1,5 +1,5 @@
 <template>
-  <h1>List of countries</h1>
+  <HeaderBar/>
   <div class="countries">
     <CountryLink
       v-for="(country, idx) in countries"
@@ -12,12 +12,14 @@
 </template>
 
 <script>
+import HeaderBar from "@/components/HeaderBar.vue";
 import CountryLink from "@/components/CountryLink.vue";
 
 export default {
   name: 'CountriesView',
   components: {
-    CountryLink
+    HeaderBar,
+    CountryLink,
   },
   created () {
     // action
