@@ -56,12 +56,14 @@ const store = createStore({
       // load the data via fetch
       const response =
           await fetch('https://restcountries.com/v3.1/name/' + country_name);
+      let country_data = [];
+      if (!response.ok && response.status != 404) {
+        throw response;
+      }
 
-      if (!response.ok) throw response;
+      // parse the JSON response if it isn't empty
+      if (response.status != 404) country_data = await response.json();
 
-      // parse the JSON response
-      const country_data = await response.json();
-      console.log(country_data);
       // commit the new value via the "setCountries" mutation
       commit(
           'setCountries',

@@ -1,6 +1,7 @@
 <template>
   <HeaderBar/>
   <div class="countries">
+    <ErrorMessage v-if="countries.length === 0"/>
     <CountryLink
       v-for="(country, idx) in countries"
       :key="idx"
@@ -14,12 +15,14 @@
 <script>
 import HeaderBar from "@/components/HeaderBar.vue";
 import CountryLink from "@/components/CountryLink.vue";
+import ErrorMessage from "@/components/icons/ErrorMessage.vue";
 
 export default {
   name: 'CountriesView',
   components: {
     HeaderBar,
     CountryLink,
+    ErrorMessage,
   },
   created () {
     this.$store.dispatch('loadCountries');
