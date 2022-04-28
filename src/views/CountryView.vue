@@ -1,7 +1,8 @@
 <template>
-  <div class="country">
+  <header>
     <h1 class="country_name">{{ country.name.official ? country.name.official : country.name }}</h1>
-    <div class="container">
+  </header>
+  <div class="country">
       <div class="caracteristics">
           <span class="carac name">Name : <strong>{{ country.name.official ? country.name.official : country.name }}</strong></span>
           <span class="carac native_name">Native name : <strong>{{ country.name.nativeName ? country.name.nativeName.eng.official : country.nativeName }}</strong></span>
@@ -19,7 +20,6 @@
         <img class="flag_picture" :src="country.flags.svg"/>
         <span class="label">{{ country.name.official ? country.name.official : country.name + " flag"}}</span>
       </div>
-    </div>
     <router-link
       :to="{name :'home'}"
       class="back_button"
@@ -43,7 +43,6 @@ export default {
   computed: {
     country: function() {
       // GETTER
-      console.log(this.$store.getters.getCurrentCountry);
       return this.$store.getters.getCurrentCountry;
     }
   },
@@ -53,19 +52,18 @@ export default {
 <style scoped>
   .country {
     width: 100%;
-    height: 100%;
+    height: calc(100% - var(--header-height));
+    display: flex;
     position: relative;
+    margin: var(--header-height) 0 0 0;
   }
   
-  h1 {
-    text-align: center;
-    padding: 3% 2.5% 2.5% 2.5%;
+  header {
+    justify-content: center;
   }
 
-  .container {
-    width: 100%;
-    height: 83.5vh;
-    display: flex;
+  h1 {
+    text-align: center;
   }
 
   .caracteristics,
@@ -110,5 +108,4 @@ export default {
     left: 0;
     margin: 30px;
   }
-
 </style>

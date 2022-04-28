@@ -1,5 +1,8 @@
 <template>
-  <HeaderBar/>
+  <header>
+      <h1>List of countries</h1>
+      <SearchBar/>
+  </header>
   <div class="countries">
     <ErrorMessage v-if="countries.length === 0"/>
     <CountryLink
@@ -13,14 +16,14 @@
 </template>
 
 <script>
-import HeaderBar from "@/components/HeaderBar.vue";
+import SearchBar from "@/components/SearchBar.vue"
 import CountryLink from "@/components/CountryLink.vue";
 import ErrorMessage from "@/components/icons/ErrorMessage.vue";
 
 export default {
   name: 'CountriesView',
   components: {
-    HeaderBar,
+    SearchBar,
     CountryLink,
     ErrorMessage,
   },
@@ -37,6 +40,11 @@ export default {
 </script>
 
 <style scoped>
+header {
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
 h1 {
   text-align: center;
   padding: 3% 2.5% 2.5% 2.5%;

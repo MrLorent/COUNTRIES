@@ -33,10 +33,25 @@ main {
   margin: 0;
 }
 
+header {
+    background-color: var(--dark-grey);
+    width: 100%;
+    height: var(--header-height);
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
 h1, h2
 {
   font-size: 1.25em;
   margin: 0 0 0 0;
+}
+
+h1 {
+    text-transform: uppercase;
 }
 
 ul {
