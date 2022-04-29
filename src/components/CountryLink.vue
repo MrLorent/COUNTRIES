@@ -26,8 +26,8 @@ export default {
 .country_link
 {
   background-color: var(--dark-grey);
-  width: calc(50% - 10px);
-  height: fit-content;
+  width: calc(25% - 10px);
+  height: calc(2.2em + 40px);
   border-radius: 5px;
   box-sizing: border-box;
   display: flex;
@@ -38,14 +38,14 @@ export default {
 
 .country_flag
 {
-  width: 37.5px;
-  height: 25px;
+  width: 3.5em;
+  height: 2.2em;
   object-fit: cover;
 }
 
 h2
 {
-  font-size: 1.25em;
+  font-size: 1.1em;
   margin: 0 0 0 20px;
 }
 </style>
