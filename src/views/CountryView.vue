@@ -16,7 +16,7 @@
           <!-- COUNTRY NATIVE NAME -->
           <div class="carac native_name">
             <span class="label">Native name : </span>
-            <span class="native_name">{{ country.name.nativeName ? country.name.nativeName.eng.official : country.nativeName }}</span>
+            <span class="native_name">{{ country.name.nativeName ? country.name.nativeName[Object.keys(country.name.nativeName)[0]].official : country.nativeName }}</span>
           </div>
 
           <!-- COUNTRY CAPITAL -->
@@ -66,7 +66,7 @@ export default {
     id: String,
   },
 
-  /*====== METHODS ======*/
+  /*======= METHODS =======*/
   computed: {
     country: function() {
       // GETTER
@@ -74,14 +74,14 @@ export default {
     }
   },
 
-  /*====== HOOKS ======*/
+  /*======= HOOKS =======*/
   created () {
     // ACTION
-    this.$store.dispatch('findCurrentCountry', this.id);
+    this.$store.dispatch('find_current_country', this.id);
   },
   beforeUnmount () {
     // ACTION
-    this.$store.dispatch('clearCurrentCountry');
+    this.$store.dispatch('clear_current_country');
     localStorage.removeItem('current_country');
   },
 }

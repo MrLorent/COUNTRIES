@@ -13,7 +13,8 @@ export default {
 </script>
 
 <style scoped>
-.cross_icon {
+.cross_icon
+{
   fill: var(--light-grey);
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -21,7 +22,8 @@ export default {
   height: 100%;
 }
 
-path {
+path
+{
   stroke: var(--white);
   stroke-width: 1px;
 }

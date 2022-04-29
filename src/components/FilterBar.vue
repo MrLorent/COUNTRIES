@@ -37,7 +37,7 @@ export default {
   /*====== ATTRIBUTS ======*/
   name: 'FilterBar',
 
-  /*====== METHODS ======*/
+  /*======= METHODS =======*/
   methods: {
     on_countries_sort_type_changed(event){
       this.$store.dispatch('update_countries_sort_type', event.target.value);
@@ -49,6 +49,7 @@ export default {
       this.$store.dispatch('update_region_filter', event.target.value);
     }
   },
+
   computed: {
     countries_sort_type() {
       // GETTER
