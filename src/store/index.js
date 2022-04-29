@@ -167,13 +167,6 @@ const store = createStore({
           current_country,
       );
     },
-
-    clear_current_country: ({commit}) => {
-      commit(
-          'set_current_country',
-          {},
-      );
-    },
   }
 })
 

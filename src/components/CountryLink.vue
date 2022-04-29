@@ -43,19 +43,39 @@ export default {
   object-fit: cover;
 }
 
-h2
+.country_name
 {
   font-size: 1.1em;
   margin: 0 0 0 20px;
 }
 
+@media (max-width: 1300px)
+{
+  .country_link
+  {
+    width: calc(33% - 10px);
+  }
+}
+
 @media (max-width: 991.98px)
 {
-  
+  .country_link
+  {
+    width: calc(50% - 10px);
+  }
 }
 
 @media (max-width: 575.98px)
 {
+  .country_link
+  {
+    width: calc(100% - 10px);
+  }
 
+  .country_name
+  {
+    font-size: 0.95em;
+    margin: 0 0 0 15px;
+  }
 }
 </style>

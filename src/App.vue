@@ -47,6 +47,7 @@ header {
     display: flex;
     align-items: center;
     padding: 0 20px;
+    z-index: 1;
 }
 
 h1, h2
@@ -89,6 +90,7 @@ a:hover {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   position: relative;
 }
 

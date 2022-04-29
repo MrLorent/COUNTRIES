@@ -60,12 +60,10 @@ header {
 
 .countries {
   width: 100%;
-  height: calc(100% - var(--header-height));
   box-sizing: border-box;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  overflow-y: scroll;
   padding: 15px;
   margin: calc(var(--header-height) + var(--filter-bar-height)) 0 0 0;
 }
