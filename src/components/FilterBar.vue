@@ -11,6 +11,19 @@
               <label for="reversed">Reverse order</label>
               <input :value="reversed" @input="on_reversed_changed" type="checkbox" id="reversed" :checked="reversed === 'on'">
           </div>
+          <div class="filter region">
+              <label for="region_filter">Filter by region :</label>
+              <select :value="region_filter" @input="on_region_filter_changed" id="region_filter">
+                  <option value="all">all</option>
+                  <option
+                    v-for="(region, idx) in regions"
+                    :key="idx"
+                    :value="region"
+                  >
+                    {{region}}
+                  </option>
+              </select>
+          </div>
     </div>
 </template>
 
@@ -21,22 +34,34 @@ export default {
   props: {
     countries_sort_type: String,
     reversed: String,
+    region_filter: String,
   },
   methods: {
     on_countries_sort_type_changed(event){
-        this.$emit('update:countries_sort_type', event.target.value);
+      this.$emit('update:countries_sort_type', event.target.value);
     },
     on_reversed_changed(){
-        this.$emit('update:reversed', this.reversed == "off" ? "on" : "off");
+      this.$emit('update:reversed', this.reversed == "off" ? "on" : "off");
     },
+    on_region_filter_changed(event){
+      this.$emit('update:region_filter', event.target.value);
+    }
+  },
+  computed: {
+    regions () {
+      return this.$store.getters.getRegions;
+    }
   },
   watch: {
     countries_sort_type(new_countries_sort_type) {
-        localStorage.setItem("countries_sort_type", new_countries_sort_type);
+      localStorage.setItem("countries_sort_type", new_countries_sort_type);
     },
     reversed(new_reversed){
-        localStorage.setItem("reversed", new_reversed);
-    }
+      localStorage.setItem("reversed", new_reversed);
+    },
+    region_filter(new_region_filter){
+      localStorage.setItem("region_filter", new_region_filter);
+    },
   },
 }
 </script>
