@@ -100,7 +100,10 @@ label {
 {
   .filter_bar
   {
+    flex-direction: column;
+    justify-content: space-around;
     top: calc(2 * var(--header-height));
+    padding: 15px 15px 80px 15px;
     transform: translateX(105vw);
     transition: 0.25s ease-in;
   }
@@ -109,6 +112,17 @@ label {
   {
     transform: translateX(0);
     transition: 0.25s ease-out;
+  }
+
+  .filter
+  {
+    width: 100%;
+    margin: 0 0 0 0;
+  }
+
+  .filter select
+  {
+    flex: 1;
   }
 }
 </style>
