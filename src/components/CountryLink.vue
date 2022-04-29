@@ -25,6 +25,7 @@ export default {
 .country_link {
     background-color: var(--dark-grey);
     width: calc(50% - 10px);
+    height: fit-content;
     border-radius: 5px;
     box-sizing: border-box;
     display: flex;
