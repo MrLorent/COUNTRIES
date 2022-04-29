@@ -4,6 +4,7 @@
 
 <script>
 export default {
+  /*====== ATTRIBUTS ======*/
   name: 'App',
 }
 </script>
@@ -22,6 +23,9 @@ export default {
 
   /* HEADER */
   --header-height: 60px;
+
+  /* FILTER BAR */
+  --filter-bar-height: 50px;
 }
 
 /*------------ GENERAL -------------*/
@@ -42,6 +46,7 @@ header {
     top: 0;
     display: flex;
     align-items: center;
+    padding: 0 20px;
 }
 
 h1, h2

@@ -1,8 +1,11 @@
 <template>
+  <!-- HEADER -->
   <header>
       <h1>List of countries</h1>
       <SearchBar/>
   </header>
+  <FilterBar/>
+
   <div class="countries">
     <ErrorMessage v-if="countries.length === 0"/>
     <CountryLink
@@ -16,38 +19,43 @@
 </template>
 
 <script>
-import SearchBar from "@/components/SearchBar.vue"
+import SearchBar from "@/components/SearchBar.vue";
+import FilterBar from "@/components/FilterBar.vue";
 import CountryLink from "@/components/CountryLink.vue";
 import ErrorMessage from "@/components/icons/ErrorMessage.vue";
 
 export default {
+  /*====== ATTRIBUTS ======*/
   name: 'CountriesView',
   components: {
     SearchBar,
+    FilterBar,
     CountryLink,
     ErrorMessage,
   },
-  created () {
-    this.$store.dispatch('loadCountries');
-  },
+
+  /*====== METHODS ======*/
   computed:  {
     countries() {
-      // Getters
-      return this.$store.getters.getCountries;
+      // GETTER
+      return this.$store.getters.get_sorted_countries;
     }
-  }
+  },
+
+  /*====== HOOKS ======*/
+  created () {
+    this.$store.dispatch('load_countries')
+    .then(() => {
+      this.$store.dispatch('load_regions');
+    });
+  },
 }
 </script>
 
 <style scoped>
 header {
   justify-content: space-between;
-  padding: 0 15px;
-}
-
-h1 {
-  text-align: center;
-  padding: 3% 2.5% 2.5% 2.5%;
+  border-bottom: 1px solid var(--light-grey);
 }
 
 .countries {
@@ -59,6 +67,6 @@ h1 {
   flex-wrap: wrap;
   overflow-y: scroll;
   padding: 15px;
-  margin: var(--header-height) 0 0 0;
+  margin: calc(var(--header-height) + var(--filter-bar-height)) 0 0 0;
 }
 </style>
