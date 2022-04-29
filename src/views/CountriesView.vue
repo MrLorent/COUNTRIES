@@ -4,6 +4,7 @@
       <SearchBar/>
   </header>
   <FilterBar/>
+
   <div class="countries">
     <ErrorMessage v-if="countries.length === 0"/>
     <CountryLink
@@ -23,6 +24,7 @@ import CountryLink from "@/components/CountryLink.vue";
 import ErrorMessage from "@/components/icons/ErrorMessage.vue";
 
 export default {
+  /*====== ATTRIBUTS ======*/
   name: 'CountriesView',
   components: {
     SearchBar,
@@ -30,19 +32,23 @@ export default {
     CountryLink,
     ErrorMessage,
   },
-  created () {
-    this.$store.dispatch('loadCountries')
-    .then(() => {
-      this.$store.dispatch('loadRegions');
-      console.log(this.$store.getters.getCountries);
-    });
-  },
+
+  /*====== METHODS ======*/
   computed:  {
     countries() {
       // GETTER
       return this.$store.getters.getSortedCountries;
     }
-  }
+  },
+
+  /*====== HOOKS ======*/
+  created () {
+    this.$store.dispatch('load_countries')
+    .then(() => {
+      this.$store.dispatch('loadRegions');
+      console.log(this.$store.getters.getCountries);
+    });
+  },
 }
 </script>
 

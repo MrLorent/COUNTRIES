@@ -1,19 +1,25 @@
 import {getAllCountries, getCountryByName} from '@/services/api/RESTcountries';
 import {createStore} from 'vuex'
 
-// Create a new store instance.
 const store = createStore({
+  /*======== STATE ========*/
   state: {
+    /*------ DATAS ------*/
     currentCountry: {},
     countries: [],
     regions: [],
 
+    /*------ FILTERS ------*/
     countries_sort_type: localStorage.getItem('countries_sort_type') || 'name',
     reversed: localStorage.getItem('reversed') || 'off',
     region_filter: localStorage.getItem('region_filter') || 'all',
   },
+
+  /*======== GETTERS ========*/
   getters: {
     getCountries: state => state.countries,
+    getCurrentCountry: state => state.currentCountry,
+    getRegions: state => state.regions,
     get_countries_sort_type: state => state.countries_sort_type,
     get_reversed: state => state.reversed,
     get_region_filter: state => state.region_filter,
@@ -36,14 +42,21 @@ const store = createStore({
 
       return countries.filter(region_filter_func).sort(comparator)
     },
-    getCurrentCountry: state => state.currentCountry,
-    getRegions: state => state.regions,
   },
+
+  /*======== MUTATIONS ========*/
   mutations: {
-    setCountries: (state, countries_data) => {
+    set_countries: (state, countries_data) => {
       state.countries = countries_data;
       localStorage.setItem('current_countries', JSON.stringify(countries_data));
     },
+
+    setCurrentCountry: (state, country_data) => {
+      state.currentCountry = country_data;
+      localStorage.setItem('current_country', JSON.stringify(country_data));
+    },
+
+    setRegions: (state, list_of_regions) => state.regions = list_of_regions,
 
     set_countries_sort_type: (state, new_countries_sort_type) => {
       state.countries_sort_type = new_countries_sort_type;
@@ -59,16 +72,12 @@ const store = createStore({
       state.region_filter = new_region_filter;
       localStorage.setItem('region_filter', new_region_filter);
     },
-
-    setCurrentCountry: (state, country_data) => {
-      state.currentCountry = country_data;
-      localStorage.setItem('current_country', JSON.stringify(country_data));
-    },
-    setRegions: (state, list_of_regions) => state.regions = list_of_regions,
   },
+
+  /*======== ACTIONS ========*/
   actions: {
     // [API REQUEST] GET ALL COUNTRIES
-    loadCountries: async ({commit}) => {
+    load_countries: async ({commit}) => {
       let countries_data;
 
       if (localStorage.getItem('current_countries')) {
@@ -76,6 +85,7 @@ const store = createStore({
       } else if (localStorage.getItem('all_countries')) {
         countries_data = JSON.parse(localStorage.getItem('all_countries'));
       } else {
+        // Get the list of countries from the API
         countries_data = await getAllCountries();
 
         // localy store the list of countries
@@ -84,7 +94,7 @@ const store = createStore({
 
       // commit the new value via the "setCountries" mutation
       commit(
-          'setCountries',
+          'set_countries',
           countries_data,
       );
     },
@@ -131,7 +141,7 @@ const store = createStore({
       // load the data via fetch
       const result = await getCountryByName(country_name);
       commit(
-          'setCountries',
+          'set_countries',
           result,
       );
     },

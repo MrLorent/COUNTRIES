@@ -20,7 +20,7 @@
                     :key="idx"
                     :value="region"
                   >
-                    {{region}}
+                    {{ region }}
                   </option>
               </select>
           </div>

@@ -25,7 +25,7 @@ export default {
       this.search = "";
       localStorage.removeItem('current_countries');
       // action
-      this.$store.dispatch('loadCountries');
+      this.$store.dispatch('load_countries');
     },
     research(event){
       this.$store.dispatch("searchCountryByName", event.target.value);
