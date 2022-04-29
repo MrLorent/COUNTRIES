@@ -6,9 +6,9 @@
 </template>
 
 <script>
-/*====== ATTRIBUTS ======*/
 export default {
-    name: 'CrossIcon',
+  /*====== ATTRIBUTS ======*/
+  name: 'CrossIcon',
 }
 </script>
 
@@ -18,13 +18,13 @@ export default {
   fill: var(--light-grey);
   stroke-linecap: round;
   stroke-linejoin: round;
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
 }
 
 path
 {
   stroke: var(--white);
-  stroke-width: 1px;
+  stroke-width: 2px;
 }
 </style>

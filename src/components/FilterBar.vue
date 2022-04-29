@@ -102,6 +102,13 @@ label {
   {
     top: calc(2 * var(--header-height));
     transform: translateX(105vw);
+    transition: 0.25s ease-in;
+  }
+
+  .filter_bar.displayed
+  {
+    transform: translateX(0);
+    transition: 0.25s ease-out;
   }
 }
 </style>
