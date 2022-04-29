@@ -38,7 +38,7 @@ export default {
   computed:  {
     countries() {
       // GETTER
-      return this.$store.getters.getSortedCountries;
+      return this.$store.getters.get_sorted_countries;
     }
   },
 
@@ -47,7 +47,7 @@ export default {
     this.$store.dispatch('load_countries')
     .then(() => {
       this.$store.dispatch('loadRegions');
-      console.log(this.$store.getters.getCountries);
+      console.log(this.$store.getters.get_countries);
     });
   },
 }

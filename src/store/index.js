@@ -1,10 +1,10 @@
-import {getAllCountries, getCountryByName} from '@/services/api/RESTcountries';
+import {getAllCountries, getCountryByName} from '@/services/api/RESTCountries';
 import {createStore} from 'vuex'
 
 const store = createStore({
   /*======== STATE ========*/
   state: {
-    /*------ DATAS ------*/
+    /*----- ATTRIBUTS -----*/
     currentCountry: {},
     countries: [],
     regions: [],
@@ -17,13 +17,16 @@ const store = createStore({
 
   /*======== GETTERS ========*/
   getters: {
-    getCountries: state => state.countries,
-    getCurrentCountry: state => state.currentCountry,
-    getRegions: state => state.regions,
+    /*---- ATTRIBUTS GETTERS ----*/
+    get_countries: state => state.countries,
+    get_current_country: state => state.currentCountry,
+    get_regions: state => state.regions,
+
+    /*---- FILTERS GETTERS ----*/
     get_countries_sort_type: state => state.countries_sort_type,
     get_reversed: state => state.reversed,
     get_region_filter: state => state.region_filter,
-    getSortedCountries: state => {
+    get_sorted_countries: state => {
       const countries = state.countries;
       const field = state.countries_sort_type;
       const reversed = state.reversed === 'on' ? -1 : 1;
@@ -122,7 +125,7 @@ const store = createStore({
 
     // [LOCAL ACTION] FIND CURRENT COUNTRY
     findCurrentCountry: async ({commit, getters}, country_id) => {
-      let current_country = getters.getSortedCountries[country_id];
+      let current_country = getters.get_sorted_countries[country_id];
       commit(
           'setCurrentCountry',
           current_country,
