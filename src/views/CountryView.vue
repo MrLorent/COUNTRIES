@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1 class="country_name">{{ country.name.official }}</h1>
+    <h1 class="country_name">{{ country.name.official ? country.name.official : country.name }}</h1>
   </header>
   <div class="country">
       <!-- TEXT DESCRIPTIONS SECTION -->
@@ -8,26 +8,26 @@
           <!-- COUNTRY NAME -->
           <div class="carac">
             <span class="label">Name : </span>
-            <span class="name">{{ country.name.official }}</span>
+            <span class="name">{{ country.name.official ? country.name.official : country.name }}</span>
           </div>
 
           <!-- COUNTRY NATIVE NAME -->
           <div class="carac native_name">
             <span class="label">Native name : </span>
-            <span class="native_name">{{ country.name.nativeName[Object.keys(country.name.nativeName)[0]].official }}</span>
+            <span class="native_name">{{ country.name.nativeName ? country.name.nativeName.eng.official : country.nativeName }}</span>
           </div>
 
           <!-- COUNTRY CAPITAL -->
           <div class="carac">
             <span class="label">Capital : </span>
-            <span class="capital">{{ country.capital[0] }}</span>
+            <span class="capital">{{ typeof(country.capital) == "object" ? country.capital[0] : country.capital }}</span>
           </div>
 
           <!-- COUNTRY LANGUAGES -->
           <div class="carac">
             <span class="label">Language(s) spoken : </span>
             <ul class="languages">
-              <li class="language" v-for="(language, idx) in country.languages" :key="idx">- {{ language }}</li>
+              <li class="language" v-for="(language, idx) in country.languages" :key="idx">- {{ language.name ? language.name : language}}</li>
             </ul>
           </div>
 
@@ -65,7 +65,7 @@ export default {
   },
   created () {
     // ACTION
-    this.$store.dispatch('loadCurrentCountry', this.id);
+    this.$store.dispatch('findCurrentCountry', this.id);
   },
   beforeUnmount () {
     // ACTION

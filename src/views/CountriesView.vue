@@ -45,8 +45,7 @@ export default {
     this.$store.dispatch('loadCountries')
     .then(() => {
       this.$store.dispatch('loadRegions');
-      this.$store.dispatch('sortCountries');
-      console.log(this.$store.getters.getSortedCountries);
+      console.log(this.$store.getters.getCountries);
     });
   },
   computed:  {
