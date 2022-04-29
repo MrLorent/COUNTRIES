@@ -14,7 +14,7 @@
           <div class="filter region">
               <label for="region_filter">Filter by region :</label>
               <select :value="this.$store.getters.get_region_filter" @input="on_region_filter_changed" id="region_filter">
-                  <option value="all">all</option>
+                  <option value="all">All</option>
                   <option
                     v-for="(region, idx) in regions"
                     :key="idx"
