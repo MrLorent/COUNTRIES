@@ -18,6 +18,8 @@ export default {
   --dark-grey: #202020;
   --light-grey: #323232;
 
+  --green: #41b883;
+
   --discret-font-color: #838383;
   --white: #ffffff;
 

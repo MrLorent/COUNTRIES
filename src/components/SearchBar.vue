@@ -83,7 +83,7 @@ export default {
 .search_bar:focus
 {
   outline: none;
-  border: 1px solid var(--white);
+  border: 1px solid var(--green);
 }
 
 @media (max-width: 991.98px)

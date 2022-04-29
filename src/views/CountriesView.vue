@@ -16,6 +16,10 @@
       :flag="country.flags.svg"
     />
   </div>
+
+  <div class="filters_button">
+    <FiltersIcon/>
+  </div>
 </template>
 
 <script>
@@ -23,6 +27,7 @@ import SearchBar from "@/components/SearchBar.vue";
 import FilterBar from "@/components/FilterBar.vue";
 import CountryLink from "@/components/CountryLink.vue";
 import ErrorMessage from "@/components/icons/ErrorMessage.vue";
+import FiltersIcon from "@/components/icons/FiltersIcon.vue";
 
 export default {
   /*====== ATTRIBUTS ======*/
@@ -32,6 +37,7 @@ export default {
     FilterBar,
     CountryLink,
     ErrorMessage,
+    FiltersIcon
   },
 
   /*====== METHODS ======*/
@@ -68,6 +74,11 @@ header {
   margin: calc(var(--header-height) + var(--filter-bar-height)) 0 0 0;
 }
 
+.filters_button
+{
+  display: none;
+}
+
 @media (max-width: 991.98px)
 {
   
@@ -86,6 +97,22 @@ header {
   .countries
   {
     margin: calc(2 * var(--header-height)) 0 0 0;
+  }
+
+  .filters_button
+  {
+    cursor: pointer;
+    background-color: var(--green);
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 15px;
   }
 }
 </style>
