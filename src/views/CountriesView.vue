@@ -45,24 +45,25 @@ export default {
     this.$store.dispatch('loadCountries')
     .then(() => {
       this.$store.dispatch('loadRegions');
-      console.log(this.$store.getters.getCountries);
+      this.$store.dispatch('sortCountries');
+      console.log(this.$store.getters.getSortedCountries);
     });
   },
   computed:  {
     countries() {
       // GETTER
-      const countries = this.$store.getters.getCountries;
-      const field = this.countries_sort_type;
-      const reversed = this.reversed === "on" ? -1 : 1;
+      return this.$store.getters.getSortedCountries;
+      // const field = this.countries_sort_type;
+      // const reversed = this.reversed === "on" ? -1 : 1;
 
-      const region_filter_func = (a) => this.region_filter === "all" ? true : a.region.toLowerCase().includes(this.region_filter.toLowerCase());
-      const name_comparator = (a, b) => a[field].official ? a[field].official.localeCompare(b[field].official) * reversed : a[field].localeCompare(b[field]) * reversed;
-      const numeric_code_comparator = (a, b) => a[field] ? (b[field] - a[field]) * reversed < 0 : (b.ccn3 - a.ccn3) * reversed < 0;
-      const comparator = ['name'].includes(field) ? name_comparator : numeric_code_comparator;
+      // const region_filter_func = (a) => this.region_filter === "all" ? true : a.region.toLowerCase().includes(this.region_filter.toLowerCase());
+      // const name_comparator = (a, b) => a[field].official ? a[field].official.localeCompare(b[field].official) * reversed : a[field].localeCompare(b[field]) * reversed;
+      // const numeric_code_comparator = (a, b) => a[field] ? (b[field] - a[field]) * reversed < 0 : (b.ccn3 - a.ccn3) * reversed < 0;
+      // const comparator = ['name'].includes(field) ? name_comparator : numeric_code_comparator;
       
-      return countries
-          .filter(region_filter_func)
-          .sort(comparator)
+      // return countries
+      //     .filter(region_filter_func)
+      //     .sort(comparator)
     }
   }
 }

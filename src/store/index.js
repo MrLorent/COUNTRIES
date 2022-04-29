@@ -7,9 +7,12 @@ const store = createStore({
     currentCountry: {},
     countries: [],
     regions: [],
+
+    sortedCountries: [],
   },
   getters: {
     getCountries: state => state.countries,
+    getSortedCountries: state => state.sortedCountries,
     getCurrentCountry: state => state.currentCountry,
     getRegions: state => state.regions,
   },
@@ -18,6 +21,8 @@ const store = createStore({
       state.countries = countries_data;
       localStorage.setItem('current_countries', JSON.stringify(countries_data));
     },
+    setSortedCountries: (state, sorted_countries_data) =>
+        state.sortedCountries = sorted_countries_data,
     setCurrentCountry: (state, country_data) => {
       state.currentCountry = country_data;
       localStorage.setItem('current_country', JSON.stringify(country_data));
@@ -44,6 +49,13 @@ const store = createStore({
       commit(
           'setCountries',
           countries_data,
+      );
+    },
+
+    sortCountries: ({commit, state}) => {
+      commit(
+          'setSortedCountries',
+          state.countries,
       );
     },
 
