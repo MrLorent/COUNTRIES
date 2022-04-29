@@ -15,6 +15,7 @@ const store = createStore({
   getters: {
     getCountries: state => state.countries,
     get_countries_sort_type: state => state.countries_sort_type,
+    get_reversed: state => state.reversed,
     getSortedCountries: state => {
       const countries = state.countries;
       const field = state.countries_sort_type;
@@ -42,10 +43,17 @@ const store = createStore({
       state.countries = countries_data;
       localStorage.setItem('current_countries', JSON.stringify(countries_data));
     },
+
     set_countries_sort_type: (state, new_countries_sort_type) => {
       state.countries_sort_type = new_countries_sort_type;
       localStorage.setItem('countries_sort_type', new_countries_sort_type);
     },
+
+    set_reversed: (state, new_reversed_value) => {
+      state.reversed = new_reversed_value;
+      localStorage.setItem('reversed', new_reversed_value);
+    },
+
     setCurrentCountry: (state, country_data) => {
       state.currentCountry = country_data;
       localStorage.setItem('current_country', JSON.stringify(country_data));
@@ -79,6 +87,13 @@ const store = createStore({
       commit(
           'set_countries_sort_type',
           new_countries_sort_type,
+      );
+    },
+
+    update_reversed: ({commit}, new_reversed_value) => {
+      commit(
+          'set_reversed',
+          new_reversed_value,
       );
     },
 

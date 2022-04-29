@@ -9,7 +9,7 @@
           </div>
           <div class="filter reverse_toggle">
               <label for="reversed">Reverse order</label>
-              <input @input="on_reversed_changed" type="checkbox" id="reversed" :checked="reversed === 'on'">
+              <input @input="on_reversed_changed" type="checkbox" id="reversed" :checked="this.$store.getters.get_reversed === 'on'">
           </div>
           <div class="filter region">
               <label for="region_filter">Filter by region :</label>
@@ -36,7 +36,7 @@ export default {
       this.$store.dispatch('update_countries_sort_type', event.target.value);
     },
     on_reversed_changed(){
-      this.$emit('update:reversed', this.reversed == "off" ? "on" : "off");
+      this.$store.dispatch('update_reversed', this.$store.getters.get_reversed == "off" ? "on" : "off");
     },
     on_region_filter_changed(event){
       this.$emit('update:region_filter', event.target.value);
@@ -48,9 +48,6 @@ export default {
     }
   },
   watch: {
-    reversed(new_reversed){
-      localStorage.setItem("reversed", new_reversed);
-    },
     region_filter(new_region_filter){
       localStorage.setItem("region_filter", new_region_filter);
     },
