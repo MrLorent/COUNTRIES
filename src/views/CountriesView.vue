@@ -69,4 +69,14 @@ header {
   padding: 15px;
   margin: calc(var(--header-height) + var(--filter-bar-height)) 0 0 0;
 }
+
+@media (max-width: 991.98px)
+{
+  
+}
+
+@media (max-width: 575.98px)
+{
+
+}
 </style>

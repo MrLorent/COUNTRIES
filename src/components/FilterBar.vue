@@ -90,4 +90,14 @@ export default {
 label {
   margin: 0 5px 0 0;
 }
+
+@media (max-width: 991.98px)
+{
+  
+}
+
+@media (max-width: 575.98px)
+{
+
+}
 </style>

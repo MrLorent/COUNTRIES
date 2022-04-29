@@ -80,8 +80,19 @@ export default {
   opacity: 1;
 }
 
-.search_bar:focus {
+.search_bar:focus
+{
   outline: none;
   border: 1px solid var(--white);
+}
+
+@media (max-width: 991.98px)
+{
+  
+}
+
+@media (max-width: 575.98px)
+{
+
 }
 </style>

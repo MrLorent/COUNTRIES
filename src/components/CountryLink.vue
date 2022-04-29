@@ -48,4 +48,14 @@ h2
   font-size: 1.1em;
   margin: 0 0 0 20px;
 }
+
+@media (max-width: 991.98px)
+{
+  
+}
+
+@media (max-width: 575.98px)
+{
+
+}
 </style>

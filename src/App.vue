@@ -91,4 +91,14 @@ a:hover {
   flex-direction: column;
   position: relative;
 }
+
+@media (max-width: 991.98px)
+{
+  
+}
+
+@media (max-width: 575.98px)
+{
+
+}
 </style>

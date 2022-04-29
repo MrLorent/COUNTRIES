@@ -104,7 +104,6 @@ header
 .caracteristics,
 .flag
 {
-  width: 50%;
   height: 100%;
   box-sizing: border-box;
   display: flex;
@@ -114,6 +113,7 @@ header
 
 .caracteristics
 {
+  width: 34%;
   padding: 5%;
 }
 
@@ -134,12 +134,13 @@ li
 
 .flag
 {
+  width: 66%;
   align-items: center;
 }
 
 .flag_picture
 {
-  height: 200px;
+  width: 50%;
 }
 
 .flag .label
@@ -157,5 +158,15 @@ li
   left: 0;
   padding: 15px;
   margin: 15px;
+}
+
+@media (max-width: 991.98px)
+{
+  
+}
+
+@media (max-width: 575.98px)
+{
+
 }
 </style>
