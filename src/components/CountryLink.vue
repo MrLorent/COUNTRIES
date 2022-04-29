@@ -3,7 +3,7 @@
     :to="{name: 'country', params: {id: this.id}}"
     class="country_link"
   >
-    <img v-if="flag" class="country_flag" :src="flag" alt="Country's flag"/>
+    <img v-if="flag" class="country_flag" :src="flag" :alt="name + ' flag'"/>
     <h2 class="country_name">{{name}}</h2>
   </router-link>
 </template>
@@ -15,9 +15,9 @@ export default {
   /*====== ATTRIBUTS ======*/
   name: 'CountryLink',
   props: {
-      id: Number,
-      name: String,
-      flag: String,
+    id: Number,
+    name: String,
+    flag: String,
   },
 }
 </script>
@@ -38,10 +38,13 @@ export default {
 
 .country_flag
 {
-  height: 1.5em;
+  width: 37.5px;
+  height: 25px;
+  object-fit: cover;
 }
 
-h2 {
+h2
+{
   font-size: 1.25em;
   margin: 0 0 0 20px;
 }
