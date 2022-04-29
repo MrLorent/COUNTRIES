@@ -1,3 +1,13 @@
+/*##########################################*/
+/*##########| REST Countries API |##########*/
+/*##########################################*/
+/*======== https://restcountries.com =======*/
+/*##########################################*/
+
+/**
+ * Get the list of all the countries from the API
+ * @returns {Array} - Array of countries Objects
+ */
 export async function getAllCountries() {
   // load the data via fetch
   const response = await fetch('https://restcountries.com/v2/all')
@@ -8,6 +18,11 @@ export async function getAllCountries() {
   return await response.json();
 }
 
+/**
+ * Get a list of country corresponding to the name passed
+ * @param { String } country_name - name of the country
+ * @returns { Array } - Array of countries Objects. Empty if no result found.
+ */
 export async function getCountryByName(country_name) {
   // load the data via fetch
   const response =

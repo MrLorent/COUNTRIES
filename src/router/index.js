@@ -4,8 +4,9 @@ import {createRouter, createWebHistory} from 'vue-router';
 
 const routes =
     [
+      /*====== COUNTRIES ======*/
       {
-        name: 'home',
+        name: 'countries',
         path: '/',
         component: Countries,
       },

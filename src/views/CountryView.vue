@@ -1,7 +1,9 @@
 <template>
+  <!-- HEADER -->
   <header>
     <h1 class="country_name">{{ country.name.official ? country.name.official : country.name }}</h1>
   </header>
+
   <div class="country">
       <!-- TEXT DESCRIPTIONS SECTION -->
       <div class="caracteristics">
@@ -49,7 +51,7 @@
 
   <!-- BACK BUTTON -->
   <router-link
-    :to="{name :'home'}"
+    :to="{name :'countries'}"
     class="back_button"
   >
   ← BACK
@@ -57,12 +59,23 @@
 </template>
 
 <script>
-
 export default {
+  /*====== ATTRIBUTS ======*/
   name: 'CountryView',
   props: {
     id: String,
   },
+
+  /*====== METHODS ======*/
+  computed: {
+    country: function() {
+      // GETTER
+      console.log(this.$store.getters.getCurrentCountry);
+      return this.$store.getters.getCurrentCountry;
+    }
+  },
+
+  /*====== HOOKS ======*/
   created () {
     // ACTION
     this.$store.dispatch('findCurrentCountry', this.id);
@@ -72,74 +85,78 @@ export default {
     this.$store.dispatch('clearCurrentCountry');
     localStorage.removeItem('current_country');
   },
-  computed: {
-    country: function() {
-      // GETTER
-      console.log(this.$store.getters.getCurrentCountry);
-      return this.$store.getters.getCurrentCountry;
-    }
-  },
 }
 </script>
 
 <style scoped>
-  .country {
-    width: 100%;
-    height: calc(100% - var(--header-height));
-    display: flex;
-    margin: var(--header-height) 0 0 0;
-  }
-  
-  header {
-    justify-content: center;
-  }
+.country
+{
+  width: 100%;
+  height: calc(100% - var(--header-height));
+  display: flex;
+  margin: var(--header-height) 0 0 0;
+}
 
-  .caracteristics,
-  .flag {
-    width: 50%;
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+header
+{
+  justify-content: center;
+}
 
-  .caracteristics {
-    padding: 5%;
-  }
+.caracteristics,
+.flag
+{
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-  .carac {
-    padding: 0 0 20px 0;
-  }
+.caracteristics
+{
+  padding: 5%;
+}
 
-  .carac .label {
-    font-weight: bold;
-  }
+.carac
+{
+  padding: 0 0 20px 0;
+}
 
-  li {
-    margin: 10px 0 0 10px;
-  }
+.carac .label
+{
+  font-weight: bold;
+}
 
-  .flag {
-    align-items: center;
-  }
+li
+{
+  margin: 10px 0 0 10px;
+}
 
-  .flag_picture {
-    height: 200px;
-  }
+.flag
+{
+  align-items: center;
+}
 
-  .flag .label {
-    color:var(--discret-font-color);
-    font-style: italic;
-    padding: 20px 0;
-  }
+.flag_picture
+{
+  height: 200px;
+}
 
-  .back_button {
-    font-style: italic;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 15px;
-    margin: 15px;
-  }
+.flag .label
+{
+  color:var(--discret-font-color);
+  font-style: italic;
+  padding: 20px 0;
+}
+
+.back_button
+{
+  font-style: italic;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  margin: 15px;
+}
 </style>

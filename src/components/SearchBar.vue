@@ -11,6 +11,7 @@
 import CrossIcon from '@/components/icons/CrossIcon.vue';
 
 export default {
+  /*====== ATTRIBUTS ======*/
   name: 'SearchBar',
   components: {
       CrossIcon,

@@ -12,6 +12,7 @@
 
 
 export default {
+  /*====== ATTRIBUTS ======*/
   name: 'CountryLink',
   props: {
       id: Number,

@@ -1,4 +1,5 @@
 <template>
+  <!-- HEADER -->
   <header>
       <h1>List of countries</h1>
       <SearchBar/>

@@ -30,6 +30,7 @@
 <script>
 
 export default {
+  /*====== ATTRIBUTS ======*/
   name: 'FilterBar',
   methods: {
     on_countries_sort_type_changed(event){
