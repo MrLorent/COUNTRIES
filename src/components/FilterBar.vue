@@ -13,7 +13,7 @@
           </div>
           <div class="filter region">
               <label for="region_filter">Filter by region :</label>
-              <select @input="on_region_filter_changed" id="region_filter">
+              <select :value="this.$store.getters.get_region_filter" @input="on_region_filter_changed" id="region_filter">
                   <option value="all">all</option>
                   <option
                     v-for="(region, idx) in regions"
@@ -39,18 +39,13 @@ export default {
       this.$store.dispatch('update_reversed', this.$store.getters.get_reversed == "off" ? "on" : "off");
     },
     on_region_filter_changed(event){
-      this.$emit('update:region_filter', event.target.value);
+      this.$store.dispatch('update_region_filter', event.target.value);
     }
   },
   computed: {
     regions () {
       return this.$store.getters.getRegions;
     }
-  },
-  watch: {
-    region_filter(new_region_filter){
-      localStorage.setItem("region_filter", new_region_filter);
-    },
   },
 }
 </script>

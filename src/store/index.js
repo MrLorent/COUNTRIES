@@ -16,6 +16,7 @@ const store = createStore({
     getCountries: state => state.countries,
     get_countries_sort_type: state => state.countries_sort_type,
     get_reversed: state => state.reversed,
+    get_region_filter: state => state.region_filter,
     getSortedCountries: state => {
       const countries = state.countries;
       const field = state.countries_sort_type;
@@ -52,6 +53,11 @@ const store = createStore({
     set_reversed: (state, new_reversed_value) => {
       state.reversed = new_reversed_value;
       localStorage.setItem('reversed', new_reversed_value);
+    },
+
+    set_region_filter: (state, new_region_filter) => {
+      state.region_filter = new_region_filter;
+      localStorage.setItem('region_filter', new_region_filter);
     },
 
     setCurrentCountry: (state, country_data) => {
@@ -94,6 +100,13 @@ const store = createStore({
       commit(
           'set_reversed',
           new_reversed_value,
+      );
+    },
+
+    update_region_filter: ({commit}, new_region_filter) => {
+      commit(
+          'set_region_filter',
+          new_region_filter,
       );
     },
 
