@@ -7,12 +7,31 @@ const store = createStore({
     currentCountry: {},
     countries: [],
     regions: [],
+
+    countries_sort_type: localStorage.getItem('countries_sort_type') || 'name',
+    reversed: localStorage.getItem('reversed') || 'off',
+    region_filter: localStorage.getItem('region_filter') || 'all',
   },
   getters: {
     getCountries: state => state.countries,
     getSortedCountries: state => {
-      const sorted_countries = state.countries;
-      return sorted_countries;
+      const countries = state.countries;
+      const field = state.countries_sort_type;
+      const reversed = state.reversed === 'on' ? -1 : 1;
+
+      const region_filter_func = (a) => state.region_filter === 'all' ?
+          true :
+          a.region.toLowerCase().includes(state.region_filter.toLowerCase());
+      const name_comparator = (a, b) => a[field].official ?
+          a[field].official.localeCompare(b[field].official) * reversed :
+          a[field].localeCompare(b[field]) * reversed;
+      const numeric_code_comparator = (a, b) => a[field] ?
+          (b[field] - a[field]) * reversed < 0 :
+          (b.ccn3 - a.ccn3) * reversed < 0;
+      const comparator =
+          ['name'].includes(field) ? name_comparator : numeric_code_comparator;
+
+      return countries.filter(region_filter_func).sort(comparator)
     },
     getCurrentCountry: state => state.currentCountry,
     getRegions: state => state.regions,
