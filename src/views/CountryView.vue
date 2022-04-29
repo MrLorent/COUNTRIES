@@ -75,8 +75,8 @@ export default {
   computed: {
     country: function() {
       // GETTER
-      console.log(this.$store.getters.getCurrentCountry[0]);
-      return this.$store.getters.getCurrentCountry[0];
+      console.log(this.$store.getters.getCurrentCountry);
+      return this.$store.getters.getCurrentCountry;
     }
   },
 }

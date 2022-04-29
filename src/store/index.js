@@ -60,23 +60,11 @@ const store = createStore({
     },
 
     // [LOCAL ACTION] FIND CURRENT COUNTRY
-    loadCurrentCountry: async ({commit, state}, country_id) => {
-      let current_country_data;
-
-      if (localStorage.getItem('current_country')) {
-        current_country_data =
-            JSON.parse(localStorage.getItem('current_country'));
-      } else {
-        const current_country_name = state.countries[country_id].name.official ?
-            state.countries[country_id].name.official :
-            state.countries[country_id].name;
-
-        current_country_data = await getCountryByName(current_country_name);
-      }
-
+    findCurrentCountry: async ({commit, state}, country_id) => {
+      let current_country = state.countries[country_id];
       commit(
           'setCurrentCountry',
-          current_country_data,
+          current_country,
       );
     },
 
