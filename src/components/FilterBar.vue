@@ -1,7 +1,7 @@
 <template>
     <div class="filter_bar">
           <div class="filter sort_selector">
-              <label for="country_sort">Sort by : </label>
+              <label for="country_sort">Sort by :</label>
               <select :value="countries_sort_type" @input="on_countries_sort_type_changed" id="country_sort">
                   <option value="name">names</option>
                   <option value="numericCode">numeric code</option>
@@ -59,5 +59,9 @@ export default {
       display: flex;
       align-items: center;
       margin: 0 20px 0 0;
+    }
+
+    label {
+      margin: 0 5px 0 0;
     }
 </style>

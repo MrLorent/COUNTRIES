@@ -40,7 +40,11 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('loadCountries');
+    this.$store.dispatch('loadCountries')
+    .then(() => {
+      this.$store.dispatch('loadRegions');
+      console.log(this.$store.getters.getRegions);
+    });
   },
   computed:  {
     countries() {
