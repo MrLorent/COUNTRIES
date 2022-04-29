@@ -1,4 +1,4 @@
-import {getAllCountries} from '@/services/api/RESTcountries';
+import {getAllCountries, getCountryByName} from '@/services/api/RESTcountries';
 import {createStore} from 'vuex'
 
 // Create a new store instance.
@@ -32,7 +32,7 @@ const store = createStore({
       } else if (localStorage.getItem('all_countries')) {
         countries_data = JSON.parse(localStorage.getItem('all_countries'));
       } else {
-        countries_data = getAllCountries();
+        countries_data = await getAllCountries();
 
         // localy store the list of countries
         localStorage.setItem('all_countries', JSON.stringify(countries_data));
@@ -57,20 +57,10 @@ const store = createStore({
     // [API REQUEST] GET COUNTRY BY NAME
     searchCountryByName: async ({commit}, country_name) => {
       // load the data via fetch
-      const response =
-          await fetch('https://restcountries.com/v3.1/name/' + country_name);
-      let country_data = [];
-      if (!response.ok && response.status != 404) {
-        throw response;
-      }
-
-      // parse the JSON response if it isn't empty
-      if (response.status != 404) country_data = await response.json();
-
-      // commit the new value via the "setCountries" mutation
+      const result = await getCountryByName(country_name);
       commit(
           'setCountries',
-          country_data,
+          result,
       );
     },
 
