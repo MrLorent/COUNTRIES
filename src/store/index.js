@@ -18,8 +18,10 @@ const store = createStore({
       state.countries = countries_data;
       localStorage.setItem('current_countries', JSON.stringify(countries_data));
     },
-    setCurrentCountry: (state, country_data) => state.currentCountry =
-        country_data,
+    setCurrentCountry: (state, country_data) => {
+      state.currentCountry = country_data;
+      localStorage.setItem('current_country', JSON.stringify(country_data));
+    },
     setRegions: (state, list_of_regions) => state.regions = list_of_regions,
   },
   actions: {
@@ -46,11 +48,30 @@ const store = createStore({
     },
 
     // [LOCAL ACTION] FIND CURRENT COUNTRY
-    findCurrentCountry: ({commit, state}, country_id) => {
-      let current_country = state.countries[country_id];
+    loadCurrentCountry: async ({commit, state}, country_id) => {
+      let current_country_data;
+
+      if (localStorage.getItem('current_country')) {
+        current_country_data =
+            JSON.parse(localStorage.getItem('current_country'));
+      } else {
+        const current_country_name = state.countries[country_id].name.official ?
+            state.countries[country_id].name.official :
+            state.countries[country_id].name;
+
+        current_country_data = await getCountryByName(current_country_name);
+      }
+
       commit(
           'setCurrentCountry',
-          current_country,
+          current_country_data,
+      );
+    },
+
+    clearCurrentCountry: ({commit}) => {
+      commit(
+          'setCurrentCountry',
+          {},
       );
     },
 
