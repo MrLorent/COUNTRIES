@@ -41,6 +41,10 @@ const store = createStore({
       state.countries = countries_data;
       localStorage.setItem('current_countries', JSON.stringify(countries_data));
     },
+    set_countries_sort_type: (state, new_countries_sort_type) => {
+      state.countries_sort_type = new_countries_sort_type;
+      localStorage.setItem('countries_sort_type', new_countries_sort_type);
+    },
     setCurrentCountry: (state, country_data) => {
       state.currentCountry = country_data;
       localStorage.setItem('current_country', JSON.stringify(country_data));
@@ -70,9 +74,16 @@ const store = createStore({
       );
     },
 
+    update_countries_sort_type: ({commit}, new_countries_sort_type) => {
+      commit(
+          'set_countries_sort_type',
+          new_countries_sort_type,
+      );
+    },
+
     // [LOCAL ACTION] FIND CURRENT COUNTRY
-    findCurrentCountry: async ({commit, state}, country_id) => {
-      let current_country = state.countries[country_id];
+    findCurrentCountry: async ({commit, getters}, country_id) => {
+      let current_country = getters.getSortedCountries[country_id];
       commit(
           'setCurrentCountry',
           current_country,

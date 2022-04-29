@@ -2,18 +2,18 @@
     <div class="filter_bar">
           <div class="filter sort_selector">
               <label for="country_sort">Sort by :</label>
-              <select :value="countries_sort_type" @input="on_countries_sort_type_changed" id="country_sort">
+              <select @input="on_countries_sort_type_changed" id="country_sort">
                   <option value="name">names</option>
                   <option value="numericCode">numeric code</option>
               </select>
           </div>
           <div class="filter reverse_toggle">
               <label for="reversed">Reverse order</label>
-              <input :value="reversed" @input="on_reversed_changed" type="checkbox" id="reversed" :checked="reversed === 'on'">
+              <input @input="on_reversed_changed" type="checkbox" id="reversed" :checked="reversed === 'on'">
           </div>
           <div class="filter region">
               <label for="region_filter">Filter by region :</label>
-              <select :value="region_filter" @input="on_region_filter_changed" id="region_filter">
+              <select @input="on_region_filter_changed" id="region_filter">
                   <option value="all">all</option>
                   <option
                     v-for="(region, idx) in regions"
@@ -31,14 +31,9 @@
 
 export default {
   name: 'FilterBar',
-  props: {
-    countries_sort_type: String,
-    reversed: String,
-    region_filter: String,
-  },
   methods: {
     on_countries_sort_type_changed(event){
-      this.$emit('update:countries_sort_type', event.target.value);
+      this.$store.dispatch('update_countries_sort_type', event.target.value);
     },
     on_reversed_changed(){
       this.$emit('update:reversed', this.reversed == "off" ? "on" : "off");
@@ -53,9 +48,6 @@ export default {
     }
   },
   watch: {
-    countries_sort_type(new_countries_sort_type) {
-      localStorage.setItem("countries_sort_type", new_countries_sort_type);
-    },
     reversed(new_reversed){
       localStorage.setItem("reversed", new_reversed);
     },

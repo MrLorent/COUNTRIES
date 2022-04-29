@@ -3,11 +3,7 @@
       <h1>List of countries</h1>
       <SearchBar/>
   </header>
-  <FilterBar
-    v-model:countries_sort_type="countries_sort_type"
-    v-model:reversed="reversed"
-    v-model:region_filter="region_filter"
-  />
+  <FilterBar/>
   <div class="countries">
     <ErrorMessage v-if="countries.length === 0"/>
     <CountryLink
