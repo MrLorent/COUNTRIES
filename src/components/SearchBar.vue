@@ -1,10 +1,10 @@
 <template>
     <div class="search_container">
-            <button class="clear_button" v-if="search" @click="clear_search">
-                <CrossIcon/>
-            </button>
-            <input class="search_bar" v-model="search"  @keyup.enter="research" type="text" name="search" placeholder="Search a country">
-        </div>
+        <button class="clear_button" v-if="search" @click="clear_search">
+            <CrossIcon/>
+        </button>
+        <input class="search_bar" v-model="search"  @keyup.enter="research" type="text" name="search" placeholder="Search a country">
+    </div>
 </template>
 
 <script>

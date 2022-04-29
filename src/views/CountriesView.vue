@@ -33,6 +33,7 @@ export default {
   computed:  {
     countries() {
       // Getters
+      console.log(this.$store.getters.getCountries);
       return this.$store.getters.getCountries;
     }
   }
@@ -42,12 +43,10 @@ export default {
 <style scoped>
 header {
   justify-content: space-between;
-  padding: 0 15px;
 }
 
 h1 {
   text-align: center;
-  padding: 3% 2.5% 2.5% 2.5%;
 }
 
 .countries {

@@ -42,6 +42,7 @@ header {
     top: 0;
     display: flex;
     align-items: center;
+    padding: 0 20px;
 }
 
 h1, h2

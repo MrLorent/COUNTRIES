@@ -1,7 +1,7 @@
 <template>
     <div class="error_404">
         <p class="visual">¯\_(ツ)_/¯</p>
-        <p class="text">Sorry, no monster matches your research... :/</p>
+        <p class="text">Sorry, no country matches your research...</p>
     </div>
 </template>
 
