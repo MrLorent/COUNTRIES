@@ -1,3 +1,4 @@
+import {getAllCountries} from '@/services/api/RESTcountries';
 import {createStore} from 'vuex'
 
 // Create a new store instance.
@@ -31,13 +32,7 @@ const store = createStore({
       } else if (localStorage.getItem('all_countries')) {
         countries_data = JSON.parse(localStorage.getItem('all_countries'));
       } else {
-        // load the data via fetch
-        const response = await fetch('https://restcountries.com/v2/all')
-
-        if (!response.ok) throw response;
-
-        // parse the JSON response
-        countries_data = await response.json();
+        countries_data = getAllCountries();
 
         // localy store the list of countries
         localStorage.setItem('all_countries', JSON.stringify(countries_data));
