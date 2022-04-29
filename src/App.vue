@@ -22,6 +22,9 @@ export default {
 
   /* HEADER */
   --header-height: 60px;
+
+  /* FILTER BAR */
+  --filter-bar-height: 50px;
 }
 
 /*------------ GENERAL -------------*/
