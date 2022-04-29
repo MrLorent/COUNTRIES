@@ -2,7 +2,7 @@
     <div class="filter_bar">
           <div class="filter sort_selector">
               <label for="country_sort">Sort by :</label>
-              <select @input="on_countries_sort_type_changed" id="country_sort">
+              <select :value="this.$store.getters.get_countries_sort_type" @input="on_countries_sort_type_changed" id="country_sort">
                   <option value="name">names</option>
                   <option value="numericCode">numeric code</option>
               </select>

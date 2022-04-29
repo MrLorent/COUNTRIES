@@ -14,6 +14,7 @@ const store = createStore({
   },
   getters: {
     getCountries: state => state.countries,
+    get_countries_sort_type: state => state.countries_sort_type,
     getSortedCountries: state => {
       const countries = state.countries;
       const field = state.countries_sort_type;
