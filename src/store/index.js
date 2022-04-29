@@ -31,9 +31,12 @@ const store = createStore({
       const field = state.countries_sort_type;
       const reversed = state.reversed === 'on' ? -1 : 1;
 
+      // FILTERS
       const region_filter_func = (a) => state.region_filter === 'all' ?
           true :
           a.region.toLowerCase().includes(state.region_filter.toLowerCase());
+
+      // COMPARATORS
       const name_comparator = (a, b) => a[field].official ?
           a[field].official.localeCompare(b[field].official) * reversed :
           a[field].localeCompare(b[field]) * reversed;
@@ -43,7 +46,7 @@ const store = createStore({
       const comparator =
           ['name'].includes(field) ? name_comparator : numeric_code_comparator;
 
-      return countries.filter(region_filter_func).sort(comparator)
+      return countries.filter(region_filter_func).sort(comparator);
     },
   },
 
@@ -162,13 +165,6 @@ const store = createStore({
       commit(
           'set_current_country',
           current_country,
-      );
-    },
-
-    clear_current_country: ({commit}) => {
-      commit(
-          'set_current_country',
-          {},
       );
     },
   }

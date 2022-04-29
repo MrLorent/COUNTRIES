@@ -18,6 +18,8 @@ export default {
   --dark-grey: #202020;
   --light-grey: #323232;
 
+  --green: #41b883;
+
   --discret-font-color: #838383;
   --white: #ffffff;
 
@@ -47,6 +49,7 @@ header {
     display: flex;
     align-items: center;
     padding: 0 20px;
+    z-index: 1;
 }
 
 h1, h2
@@ -89,6 +92,32 @@ a:hover {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  overflow-y: scroll;
   position: relative;
+}
+
+@media (max-width: 991.98px)
+{
+  /*------------ GLOBALS -------------*/
+  :root
+  {
+    /* FILTER BAR */
+    --filter-bar-height: 60px
+  }
+}
+
+@media (max-width: 575.98px)
+{
+  /*------------ GLOBALS -------------*/
+  :root
+  {
+    /* FILTER BAR */
+    --filter-bar-height: calc(100vh - 120px);
+  }
+
+  header
+  {
+    padding: 15px;
+  }
 }
 </style>

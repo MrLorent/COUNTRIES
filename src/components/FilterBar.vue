@@ -90,4 +90,39 @@ export default {
 label {
   margin: 0 5px 0 0;
 }
+
+@media (max-width: 991.98px)
+{
+  
+}
+
+@media (max-width: 575.98px)
+{
+  .filter_bar
+  {
+    flex-direction: column;
+    justify-content: space-around;
+    top: calc(2 * var(--header-height));
+    padding: 15px 15px 80px 15px;
+    transform: translateX(105vw);
+    transition: 0.25s ease-in;
+  }
+
+  .filter_bar.displayed
+  {
+    transform: translateX(0);
+    transition: 0.25s ease-out;
+  }
+
+  .filter
+  {
+    width: 100%;
+    margin: 0 0 0 0;
+  }
+
+  .filter select
+  {
+    flex: 1;
+  }
+}
 </style>
