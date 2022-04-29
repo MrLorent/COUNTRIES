@@ -56,9 +56,9 @@ export default {
 
       // const filter_func = (a) =>
       //     a.name.toLowerCase().includes(this.search.toLowerCase());
-      const string_comparator = (a, b) => a[field].localeCompare(b[field]) * reversed;
-      const number_comparator = (a, b) => (b[field] - a[field]) * reversed < 0;
-      const comparator = ['name'].includes(field) ? string_comparator : number_comparator;
+      const name_comparator = (a, b) => a[field].official ? a[field].official.localeCompare(b[field].official) * reversed : a[field].localeCompare(b[field]) * reversed;
+      const numeric_code_comparator = (a, b) => a[field] ? (b[field] - a[field]) * reversed < 0 : (b.ccn3 - a.ccn3) * reversed < 0;
+      const comparator = ['name'].includes(field) ? name_comparator : numeric_code_comparator;
       
       return countries
           //.filter(filter_func)
