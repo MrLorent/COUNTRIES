@@ -98,6 +98,10 @@ label {
 
 @media (max-width: 575.98px)
 {
-
+  .filter_bar
+  {
+    top: calc(2 * var(--header-height));
+    transform: translateX(105vw);
+  }
 }
 </style>

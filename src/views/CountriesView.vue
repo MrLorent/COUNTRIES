@@ -75,6 +75,17 @@ header {
 
 @media (max-width: 575.98px)
 {
+  header
+  {
+    height: calc(2 * var(--header-height));
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
 
+  .countries
+  {
+    margin: calc(2 * var(--header-height)) 0 0 0;
+  }
 }
 </style>

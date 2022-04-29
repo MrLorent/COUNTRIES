@@ -93,6 +93,16 @@ export default {
 
 @media (max-width: 575.98px)
 {
+  .search_container
+  {
+    width: 100%;
+    height: 50%;
+    justify-content: center;
+  }
 
+  .search_bar
+  {
+    width: 80%;
+  }
 }
 </style>

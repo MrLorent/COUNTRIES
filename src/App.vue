@@ -96,11 +96,26 @@ a:hover {
 
 @media (max-width: 991.98px)
 {
-  
+  /*------------ GLOBALS -------------*/
+  :root
+  {
+    /* FILTER BAR */
+    --filter-bar-height: 60px
+  }
 }
 
 @media (max-width: 575.98px)
 {
+  /*------------ GLOBALS -------------*/
+  :root
+  {
+    /* FILTER BAR */
+    --filter-bar-height: calc(100vh - 120px);
+  }
 
+  header
+  {
+    padding: 15px;
+  }
 }
 </style>
