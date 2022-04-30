@@ -70,7 +70,7 @@ export default {
 
   /*======= METHODS =======*/
   computed: {
-    country: function() {
+    country() {
       // GETTER
       return this.$store.getters.get_current_country;
     }
@@ -80,6 +80,9 @@ export default {
   created () {
     // ACTION
     this.$store.dispatch('find_current_country', this.id);
+
+    // PAGE TITLE
+    document.title = this.country.name.official ? this.country.name.official : this.country.name;
   },
 }
 </script>

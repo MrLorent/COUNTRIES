@@ -1,7 +1,7 @@
 <template>
   <!-- HEADER -->
   <header>
-      <h1>List of countries</h1>
+      <h1>Countries of the World</h1>
       <SearchBar/>
   </header>
   <FilterBar/>
@@ -47,6 +47,10 @@ export default {
   },
 
   /*====== HOOKS ======*/
+  beforeCreate () {
+    // PAGE TITLE
+    document.title = "Countries of the World";
+  },
   created () {
     this.$store.dispatch('load_countries')
     .then(() => {
