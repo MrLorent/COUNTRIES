@@ -49,15 +49,14 @@
       <img class="flag_picture" :src="country.flags.svg"/>
       <span class="label">{{ country.name.official ? country.name.official : country.name + " flag"}}</span>
     </div>
-
-    <!-- BACK BUTTON -->
-    <router-link
-      :to="{name :'countries'}"
-      class="back_button"
-    >
-    ← BACK
-    </router-link>
   </div>
+  <!-- BACK BUTTON -->
+  <router-link
+    :to="{name :'countries'}"
+    class="back_button"
+  >
+  ← BACK
+  </router-link>
 </template>
 
 <script>
@@ -91,7 +90,7 @@ export default {
 .country
 {
   width: 100%;
-  height: calc(100% - var(--header-height));
+  height: calc(100vh - var(--header-height) - var(--footer-height));
   display: flex;
   position: relative;
   margin: var(--header-height) 0 0 0;
@@ -159,6 +158,7 @@ li
   left: 0;
   padding: 15px;
   margin: 15px;
+  z-index: 1;
 }
 
 @media (max-width: 991.98px)

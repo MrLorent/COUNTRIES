@@ -1,11 +1,17 @@
 <template>
   <router-view></router-view>
+  <FooterBar/>
 </template>
 
 <script>
+import FooterBar from "@/components/FooterBar.vue";
+
 export default {
   /*====== ATTRIBUTS ======*/
   name: 'App',
+  components: {
+    FooterBar,
+  }
 }
 </script>
 
@@ -28,6 +34,9 @@ export default {
 
   /* FILTER BAR */
   --filter-bar-height: 50px;
+
+  /* FOOTER */
+  --footer-height: 60px;
 }
 
 /*------------ GENERAL -------------*/
@@ -88,12 +97,13 @@ a:hover {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
-  height: 100%;
+  height: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   position: relative;
+  padding: 0 0 var(--footer-height) 0;
 }
 
 @media (max-width: 991.98px)

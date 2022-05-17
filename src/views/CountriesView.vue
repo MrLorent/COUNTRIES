@@ -16,7 +16,6 @@
       :flag="country.flags.svg"
     />
   </div>
-
   <FiltersButton/>
 </template>
 
