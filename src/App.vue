@@ -98,6 +98,7 @@ a:hover {
   -moz-osx-font-smoothing: grayscale;
   width: 100%;
   height: auto;
+  min-height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
